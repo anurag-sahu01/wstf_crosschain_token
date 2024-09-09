@@ -60,7 +60,7 @@
 			"symbol()": "95d89b41",
 			"totalSupply()": "18160ddd",
 			"transfer(address,uint256)": "a9059cbb",
-			"transfer(uint64,address,uint256)": "d15dcd62",
+			"transfer(uint64,address,address,uint256)": "bdb3c8e6",
 			"transferFrom(address,address,uint256)": "23b872dd"
 		}
 	},
@@ -425,6 +425,11 @@
 					"internalType": "uint64",
 					"name": "destChain",
 					"type": "uint64"
+				},
+				{
+					"internalType": "address",
+					"name": "destToken",
+					"type": "address"
 				},
 				{
 					"internalType": "address",

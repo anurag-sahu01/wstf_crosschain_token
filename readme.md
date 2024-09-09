@@ -5,9 +5,9 @@
 The `OmniERC20` contract is an implementation of an ERC20 token with additional features for cross-chain communication using the Omni protocol. This contract allows tokens to be transferred across different chains and manages token balances, allowances, and minting.
 
 ## Features
-  Standard ERC20 Token Functionality: Implements IERC20 and IERC20Metadata for basic token operations.
-  Cross-Chain Transfers: Uses the Omni framework to support locking tokens on the current chain and initiating transfers to other chains.
- Cross-Chain Communication: Handles incoming cross-chain messages to release tokens on the target chain.
+  Standard ERC20 Token Functionality: Implements IERC20 and IERC20Metadata for basic token operations.  
+  Cross-Chain Transfers: Uses the Omni framework to support locking tokens on the current chain and initiating transfers to other chains.   
+  Cross-Chain Communication: Handles incoming cross-chain messages to release tokens on the target chain.    
   
 
 ## Contract Inheritance

@@ -4,15 +4,21 @@ pragma solidity ^0.8.20;
 import "./OmniERC20.sol";  // Import the abstract OmniERC20 contract
 
 contract MyOmniToken is OmniERC20 {
-
+address omniPortal=0xcB60A0451831E4865bC49f41F9C67665Fc9b75C3;
     constructor(
         string memory name_,
         string memory symbol_,
-        address omniPortal,
-        uint256 initialSupply
+        uint256 initialSupply,
+        address initialMinterAddress,
+        bool ismainChain
     ) OmniERC20(name_, symbol_, omniPortal) {
         // Mint initial supply to the deployer (you can change this as needed)
-        _mint(msg.sender, initialSupply);
+        if(ismainChain== true){
+        _mint(initialMinterAddress, initialSupply);
+        }
+        else {
+              _mint(address(this), initialSupply);
+        }
     }
 
     // Public mint function, callable by the owner (if you wish to allow minting after deployment)

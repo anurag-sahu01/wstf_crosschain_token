@@ -5,8 +5,8 @@ import {IERC20} from "./IERC20.sol";
 import {IERC20Metadata} from "./extensions/IERC20Metadata.sol";
 import {Context} from "../../utils/Context.sol";
 import {IERC20Errors} from "../../interfaces/draft-IERC6093.sol";
-import {XApp} from "../../../../../lib/omni/contracts/core/src/pkg/XApp.sol";
-import {ConfLevel} from "../../../../../lib/omni/contracts/core/src/libraries/ConfLevel.sol";
+import {XApp} from "../../../../lib/omni/contracts/core/src/pkg/XApp.sol";
+import {ConfLevel} from "../../../../lib/omni/contracts/core/src/libraries/ConfLevel.sol";
 
 
 abstract contract OmniERC20 is Context, IERC20, IERC20Metadata, IERC20Errors, XApp {
@@ -66,12 +66,12 @@ abstract contract OmniERC20 is Context, IERC20, IERC20Metadata, IERC20Errors, XA
         return true;
     }
 
-   function transfer(uint64 destChain, address to, uint256 value) external payable {
+   function transfer(uint64 destChain, address destToken, address to, uint256 value) external payable {
 
         address from = _msgSender();
         _transfer(from, address(this), value);  // Lock the tokens in this contract
-        bytes memory data = abi.encodeCall(OmniERC20.receiveTransfer, (address(this), to, value));
-        uint256 fee = xcall(destChain, address(this), data, 150000);
+        bytes memory data = abi.encodeCall(OmniERC20.receiveTransfer, (destToken, to, value));
+        uint256 fee = xcall(destChain, destToken, data, 150000);
         require(msg.value >= fee, "OmniERC20: Insufficient fee");
 
     }
